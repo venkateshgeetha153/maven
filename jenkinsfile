@@ -1,0 +1,21 @@
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('cont download')
+        {
+            steps
+            {
+               git 'https://github.com/venkateshgeetha153/maven.git' 
+            }
+        }
+        stage('cont build')
+        {
+            steps
+            {
+                sh 'mvn package'
+            }
+        }
+    }
+}
