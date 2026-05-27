@@ -17,20 +17,5 @@ pipeline
                 sh 'mvn package'
             }
         }
-        stage('cont deploy')
-        {
-            steps
-            {
-              deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: '479633c6-ab03-4c62-a872-612390796190', path: '', url: 'http://172.31.12.21:8080')], contextPath: 'rrr', war: '**/*.war'   
-            }
-        }
-        stage('con testing')
-        {
-            steps
-            {
-                git 'https://github.com/IntelliqDevops/FunctionalTesting.git'
-                sh 'java -jar /home/ubuntu/.jenkins/workspace/development/testing.jar'
-            }
-        }
     }
 }
